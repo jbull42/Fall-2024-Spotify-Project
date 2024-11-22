@@ -9,6 +9,10 @@ import streamlit as st
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
+
+import warnings 
+warnings.filterwarnings ('ignore')
+
 # st.set_page_config(
 #     page_title="Hello"
 # )
@@ -78,6 +82,7 @@ st.set_page_config(
 ## make sure spotify works and your accound it valid 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID, client_secret=SPOTIPY_CLIENT_SECRET, redirect_uri=SPOTIPY_REDIRECT_URI, scope=scope))
 
+
 ## get recommendations based on user
 def get_recommendations(sp, genre=None, artist_name=None, popularity=None, limit=100):
     seed_genres = [genre] if genre else []
@@ -105,8 +110,9 @@ def get_recommendations(sp, genre=None, artist_name=None, popularity=None, limit
         }
         recommended_tracks.append(track_info)
     
+    print(recommended_tracks)
     return recommended_tracks
-    
+
     if recommendations:
         print("\nRecommended Tracks:")
         for i, track in enumerate(recommendations, 1):
@@ -114,5 +120,7 @@ def get_recommendations(sp, genre=None, artist_name=None, popularity=None, limit
             print(f"   Spotify Link: {track['spotify_url']}")
             print(f"   Preview URL: {track['preview_url']}\n")
     else:
-        print("No recommendations found based on your inputs.")
+        print("No recommendations found")
+
+get_recommendations (sp, genre = None, artist_name = None, popularity = None, limit =100)
 
