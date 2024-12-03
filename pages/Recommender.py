@@ -113,6 +113,7 @@ def get_available_genres(token):
     url = "https://api.spotify.com/v1/recommendations/available-genre-seeds"
     headers = get_auth_header(token)
     result = get(url, headers=headers)
+    st.write(result)
     json_result = json.loads(result.content)
     return json_result['genres']
 

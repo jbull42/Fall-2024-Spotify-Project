@@ -124,8 +124,8 @@ st.link_button("Our Github", "https://github.com/jbull42/Fall-2024-Spotify-Proje
 load_dotenv()
 
 client_id = os.getenv("CLIENT_ID")
-
 client_secret = os.getenv("CLIENT_SECRET")
+print("CLIENT ID:", client_id, "\nCLIENT SECRET:", client_secret)
 
 
 def get_token():
